@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Steffany Bahamon - Colombian-American cybersecurity educator bridging cultures between Miami and Chicago.">
+  <title>About - Steffany Bahamon</title>
+
+  <link rel="alternate" hreflang="es" href="/es/about.html">
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <script src="/js/theme.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav-container">
+      <h1 class="site-title">
+        <a href="/index.html">Steffany Bahamon</a>
+      </h1>
+
+      <button class="mobile-menu-toggle" aria-label="Toggle menu" id="mobile-menu-toggle">☰</button>
+
+      <div class="nav-main" id="nav-main">
+        <a href="/about.html" class="active">About</a>
+        <a href="/now.html">Now</a>
+        <a href="/posts/index.html">Posts</a>
+        <a href="/projects.html">Projects</a>
+      </div>
+
+      <div class="nav-controls">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">❄️ Chicago Winter</button>
+        <a href="/es/about.html" id="lang-toggle" class="lang-toggle" aria-label="Cambiar a español">ES</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="main-content">
+    <article>
+      <h1>About Me</h1>
+
+      <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; margin: 2rem 0;">
+        <img src="/images/profile.jpg" alt="Steffany Bahamon" class="profile-image"
+             onerror="this.style.display='none'" style="margin: 0;">
+        <div>
+          <p style="margin-top: 0;">
+            <strong>Steffany Bahamon</strong><br>
+            Cyber Defense Educator & Software Engineer<br>
+            Chicago, IL | Miami roots | Colombian heritage
+          </p>
+        </div>
+      </div>
+
+      <h2>Background</h2>
+      <p>
+        I'm a Colombian-American cybersecurity professional who bridges cultures, languages, and technical expertise.
+        Growing up in Miami gave me a deep connection to Latin American culture and the warmth of tropical waters.
+        For the past ten years, Chicago has been home—where Lake Michigan's cool depths have taught me resilience
+        through Midwest winters and inspired my appreciation for the city's rich architectural and cultural history.
+      </p>
+
+      <p>
+        My journey in cybersecurity has been driven by a mission: <strong>making security accessible to everyone</strong>.
+        I've delivered over 600 classes, teaching cybersecurity fundamentals to diverse audiences—from complete beginners
+        to experienced professionals looking to level up their skills. I teach in both English and Spanish, ensuring that
+        language is never a barrier to learning how to protect what matters.
+      </p>
+
+      <h2>Professional Focus</h2>
+      <p>
+        My work sits at the intersection of <strong>education, cybersecurity, and software engineering</strong>.
+        I specialize in:
+      </p>
+
+      <ul>
+        <li><strong>Cybersecurity Education:</strong> Developing and delivering engaging, practical curriculum that
+        bridges theory and real-world application</li>
+        <li><strong>Threat Detection & Defense:</strong> Building and implementing security systems that actually work
+        in production environments</li>
+        <li><strong>AI & Security:</strong> Exploring how Large Language Models and AI tools are transforming security
+        operations, threat detection, and incident response</li>
+        <li><strong>Bilingual Instruction:</strong> Teaching technical concepts in English and Spanish to serve
+        diverse communities</li>
+      </ul>
+
+      <h2>Beyond Work</h2>
+      <p>
+        When I'm not teaching or building systems, you'll find me:
+      </p>
+
+      <ul>
+        <li><strong>Following Formula 1:</strong> The perfect blend of engineering excellence, strategy, and competition</li>
+        <li><strong>Exploring Chicago:</strong> From architecture boat tours to discovering the history behind the city's
+        neighborhoods and skyline</li>
+        <li><strong>Travel Planning:</strong> Always plotting the next adventure, whether it's exploring new cities or
+        revisiting favorite places</li>
+        <li><strong>Learning:</strong> Constantly curious about new technologies, security research, and ways to improve
+        how we teach and learn</li>
+      </ul>
+
+      <h2>Languages</h2>
+      <p>
+        Fluent in English and Spanish. This website is available in both languages—feel free to toggle between them
+        using the language selector in the navigation.
+      </p>
+
+      <div class="wave-divider" style="margin: 3rem 0;"></div>
+
+      <h2>Get in Touch</h2>
+      <p>
+        I'm always interested in connecting with fellow educators, security professionals, and anyone passionate about
+        making technology more accessible and secure.
+      </p>
+
+      <div style="margin-top: 2rem;">
+        <a href="/resume.pdf" class="btn" download>Download Resume (PDF)</a>
+        <a href="https://github.com/sbahamon" class="btn btn-secondary" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/sbahamon" class="btn btn-secondary" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://github.com/sbahamon" aria-label="GitHub" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/sbahamon" aria-label="LinkedIn" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <p>&copy; 2025 Steffany Bahamon. Connecting Lake Michigan to the Atlantic Ocean.</p>
+    </div>
+  </footer>
+
+  <script src="/js/language.js" defer></script>
+  <script>
+    document.getElementById('mobile-menu-toggle')?.addEventListener('click', function() {
+      document.getElementById('nav-main')?.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

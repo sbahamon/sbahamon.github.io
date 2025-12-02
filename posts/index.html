@@ -3,22 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Steffany Bahamon - Cyber Defense Educator & Software Engineer. Colombian-American cybersecurity professional bridging Miami and Chicago.">
-  <meta name="author" content="Steffany Bahamon">
-  <title>Steffany Bahamon - Cyber Defense Educator & Software Engineer</title>
+  <meta name="description" content="Blog posts about AI, cybersecurity, education, and technology by Steffany Bahamon">
+  <title>Posts - Steffany Bahamon</title>
 
-  <!-- Alternate language -->
-  <link rel="alternate" hreflang="es" href="/es/index.html">
-
-  <!-- Stylesheets -->
+  <link rel="alternate" hreflang="es" href="/es/posts/index.html">
   <link rel="stylesheet" href="/styles/main.css">
-
-  <!-- Preconnect to font CDN -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
-
-  <!-- Theme script (runs immediately to prevent flash) -->
   <script src="/js/theme.js"></script>
 </head>
 <body>
@@ -30,49 +22,47 @@
         <a href="/index.html">Steffany Bahamon</a>
       </h1>
 
-      <button class="mobile-menu-toggle" aria-label="Toggle menu" id="mobile-menu-toggle">
-        ☰
-      </button>
+      <button class="mobile-menu-toggle" aria-label="Toggle menu" id="mobile-menu-toggle">☰</button>
 
       <div class="nav-main" id="nav-main">
         <a href="/about.html">About</a>
         <a href="/now.html">Now</a>
-        <a href="/posts/index.html">Posts</a>
+        <a href="/posts/index.html" class="active">Posts</a>
         <a href="/projects.html">Projects</a>
       </div>
 
       <div class="nav-controls">
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-          ❄️ Chicago Winter
-        </button>
-        <a href="/es/index.html" id="lang-toggle" class="lang-toggle" aria-label="Cambiar a español">
-          ES
-        </a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">❄️ Chicago Winter</button>
+        <a href="/es/posts/index.html" id="lang-toggle" class="lang-toggle" aria-label="Cambiar a español">ES</a>
       </div>
     </nav>
   </header>
 
   <main id="main" class="main-content">
-    <section class="hero">
-      <h1>Hi, I'm Steffany Bahamon</h1>
-      <p class="tagline">Cyber Defense Educator & Software Engineer</p>
-      <p class="intro">
-        I'm a Colombian-American cybersecurity professional who grew up in Miami and has called Chicago home for the past decade.
-        I've delivered 600+ cybersecurity classes, bridging technical and non-technical audiences with bilingual instruction in English and Spanish.
-        My work focuses on making security accessible and building systems that protect what matters.
-      </p>
-      <p class="intro">
-        When I'm not teaching or building, you'll find me following Formula 1, exploring Chicago's rich history, or planning my next adventure.
-      </p>
-    </section>
+    <h1>Posts</h1>
+    <p class="text-muted">
+      Thoughts on AI, cybersecurity, education, and bridging cultures in technology.
+    </p>
 
-    <div class="wave-divider"></div>
+    <div class="search-container">
+      <label for="search-input" class="visually-hidden">Search posts</label>
+      <input
+        type="search"
+        id="search-input"
+        class="search-input"
+        placeholder="Search posts..."
+        aria-label="Search blog posts"
+      >
+    </div>
 
-    <section>
-      <h2>Recent Posts</h2>
-      <div class="post-list">
-        <article class="post-list-item">
-          <h3><a href="/posts/llms-threat-detection.html">How LLMs Are Changing Threat Detection</a></h3>
+    <!-- Search results will appear here when searching -->
+    <div id="search-results" style="display: none;"></div>
+
+    <!-- Default post list -->
+    <div id="post-list">
+      <ul class="post-list">
+        <li class="post-list-item">
+          <h2><a href="/posts/llms-threat-detection.html">How LLMs Are Changing Threat Detection</a></h2>
           <div class="post-meta">
             <time datetime="2025-01-15">January 15, 2025</time>
             <span class="reading-time">8 min read</span>
@@ -86,10 +76,10 @@
             <span class="tag">Threat Detection</span>
             <span class="tag">Machine Learning</span>
           </div>
-        </article>
+        </li>
 
-        <article class="post-list-item">
-          <h3><a href="/posts/teaching-security-ai.html">Teaching Security in the Age of AI</a></h3>
+        <li class="post-list-item">
+          <h2><a href="/posts/teaching-security-ai.html">Teaching Security in the Age of AI</a></h2>
           <div class="post-meta">
             <time datetime="2025-01-08">January 8, 2025</time>
             <span class="reading-time">6 min read</span>
@@ -103,10 +93,10 @@
             <span class="tag">AI</span>
             <span class="tag">Career Development</span>
           </div>
-        </article>
+        </li>
 
-        <article class="post-list-item">
-          <h3><a href="/posts/home-lab-security.html">Building a Home Lab for Security Research</a></h3>
+        <li class="post-list-item">
+          <h2><a href="/posts/home-lab-security.html">Building a Home Lab for Security Research</a></h2>
           <div class="post-meta">
             <time datetime="2024-12-20">December 20, 2024</time>
             <span class="reading-time">10 min read</span>
@@ -120,11 +110,9 @@
             <span class="tag">Infrastructure</span>
             <span class="tag">Research</span>
           </div>
-        </article>
-      </div>
-
-      <a href="/posts/index.html" class="btn">View All Posts</a>
-    </section>
+        </li>
+      </ul>
+    </div>
   </main>
 
   <footer class="site-footer">
@@ -137,13 +125,11 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script src="/js/language.js" defer></script>
+  <script src="/js/search.js" defer></script>
   <script>
-    // Mobile menu toggle
     document.getElementById('mobile-menu-toggle')?.addEventListener('click', function() {
-      const navMain = document.getElementById('nav-main');
-      navMain?.classList.toggle('active');
+      document.getElementById('nav-main')?.classList.toggle('active');
     });
   </script>
 </body>

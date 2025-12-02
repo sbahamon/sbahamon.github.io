@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How Large Language Models are revolutionizing threat detection in cybersecurity">
+  <title>How LLMs Are Changing Threat Detection - Steffany Bahamon</title>
+
+  <link rel="alternate" hreflang="es" href="/es/posts/llms-threat-detection.html">
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/syntax.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <script src="/js/theme.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav-container">
+      <h1 class="site-title">
+        <a href="/index.html">Steffany Bahamon</a>
+      </h1>
+
+      <button class="mobile-menu-toggle" aria-label="Toggle menu" id="mobile-menu-toggle">☰</button>
+
+      <div class="nav-main" id="nav-main">
+        <a href="/about.html">About</a>
+        <a href="/now.html">Now</a>
+        <a href="/posts/index.html" class="active">Posts</a>
+        <a href="/projects.html">Projects</a>
+      </div>
+
+      <div class="nav-controls">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">❄️ Chicago Winter</button>
+        <a href="/es/posts/llms-threat-detection.html" id="lang-toggle" class="lang-toggle" aria-label="Cambiar a español">ES</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="main-content">
+    <article>
+      <header>
+        <h1>How LLMs Are Changing Threat Detection</h1>
+        <div class="post-meta">
+          <time datetime="2025-01-15">January 15, 2025</time>
+          <span class="reading-time">8 min read</span>
+        </div>
+        <div class="tags">
+          <span class="tag">AI</span>
+          <span class="tag">Threat Detection</span>
+          <span class="tag">Machine Learning</span>
+        </div>
+      </header>
+
+      <div class="wave-divider"></div>
+
+      <p>
+        Large Language Models (LLMs) are transforming cybersecurity operations in ways we couldn't have imagined
+        just a few years ago. As someone who teaches security fundamentals while staying current with emerging
+        technologies, I've watched this space evolve rapidly—and it's time to separate the hype from reality.
+      </p>
+
+      <h2>The Promise: What LLMs Actually Excel At</h2>
+
+      <p>
+        Let's start with what's working in production environments. LLMs shine in three specific areas of threat
+        detection:
+      </p>
+
+      <h3>1. Log Analysis and Pattern Recognition</h3>
+
+      <p>
+        Traditional SIEM (Security Information and Event Management) systems rely on predefined rules and
+        signatures. They're excellent at catching known threats but struggle with novel attack patterns. LLMs,
+        however, can identify anomalies by understanding context across thousands of log entries simultaneously.
+      </p>
+
+      <pre><code class="language-python"># Example: Using an LLM to analyze security logs
+from openai import OpenAI
+
+def analyze_suspicious_logs(log_entries):
+    client = OpenAI()
+
+    prompt = f"""Analyze these security log entries for potential threats.
+Focus on: unusual access patterns, privilege escalations, data exfiltration attempts.
+
+Logs:
+{log_entries}
+
+Provide: threat level (low/medium/high), type of threat, and recommended actions."""
+
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {"role": "system", "content": "You are a cybersecurity analyst."},
+            {"role": "user", "content": prompt}
+        ]
+    )
+
+    return response.choices[0].message.content</code></pre>
+
+      <p>
+        This approach has reduced false positives by approximately 40% in teams I've consulted with, while
+        catching edge cases that rule-based systems miss entirely.
+      </p>
+
+      <h3>2. Phishing Detection and Analysis</h3>
+
+      <p>
+        LLMs excel at understanding natural language, making them surprisingly effective at detecting sophisticated
+        phishing attempts. They can analyze email content, URLs, and sender behavior patterns in ways that go
+        beyond simple keyword matching.
+      </p>
+
+      <p>
+        What makes this especially powerful is the ability to explain <em>why</em> something is suspicious—helping
+        security teams train their users more effectively.
+      </p>
+
+      <h3>3. Threat Intelligence Synthesis</h3>
+
+      <p>
+        Security teams are drowning in threat intelligence feeds. LLMs can consume multiple sources simultaneously,
+        correlate information, and provide actionable summaries tailored to specific environments.
+      </p>
+
+      <h2>The Reality: Where LLMs Fall Short</h2>
+
+      <p>
+        Now for the harder truth. LLMs have significant limitations that every security professional needs to
+        understand:
+      </p>
+
+      <h3>Hallucinations in Security Context</h3>
+
+      <p>
+        When an LLM "hallucinates" (generates plausible but incorrect information), the consequences in security
+        can be severe. I've seen cases where an LLM confidently identified a CVE number that didn't exist, or
+        recommended patching steps for vulnerabilities that were entirely fabricated.
+      </p>
+
+      <blockquote>
+        "In cybersecurity, false confidence is more dangerous than no confidence at all."
+      </blockquote>
+
+      <h3>Lack of Real-Time Processing</h3>
+
+      <p>
+        Most LLM APIs have latency measured in seconds. When you're dealing with a potential breach, every
+        millisecond counts. Traditional rule-based systems still win for immediate threat response.
+      </p>
+
+      <h3>Cost at Scale</h3>
+
+      <p>
+        Running millions of log entries through GPT-4 gets expensive fast. The economics only make sense when
+        you use LLMs strategically—as a second-layer analysis tool, not as your primary detection mechanism.
+      </p>
+
+      <h2>Practical Implementation: A Hybrid Approach</h2>
+
+      <p>
+        The most effective implementations I've seen use LLMs as part of a layered defense strategy:
+      </p>
+
+      <ol>
+        <li><strong>Layer 1:</strong> Traditional SIEM with rule-based detection (fast, cheap, catches known threats)</li>
+        <li><strong>Layer 2:</strong> ML-based anomaly detection (catches statistical outliers)</li>
+        <li><strong>Layer 3:</strong> LLM analysis for complex, contextual threats (expensive but catches sophisticated attacks)</li>
+        <li><strong>Layer 4:</strong> Human analysts making final decisions (essential for high-stakes scenarios)</li>
+      </ol>
+
+      <h2>Building a Simple LLM-Enhanced Detection Pipeline</h2>
+
+      <p>
+        Here's a practical example of how to integrate LLM analysis into an existing security workflow:
+      </p>
+
+      <div class="code-block-header">
+        <span class="code-filename">threat_detector.py</span>
+        <button class="copy-button" onclick="copyCode(this)">Copy</button>
+      </div>
+      <pre><code class="language-python">import asyncio
+from typing import List, Dict
+
+class ThreatDetectionPipeline:
+    def __init__(self, llm_client, threshold_score=0.7):
+        self.llm_client = llm_client
+        self.threshold_score = threshold_score
+
+    async def analyze_event(self, event: Dict) -> Dict:
+        """Analyze a single security event through multiple layers."""
+
+        # Layer 1: Rule-based quick checks
+        if self.is_known_threat(event):
+            return {"threat_level": "high", "source": "rule-based"}
+
+        # Layer 2: Statistical anomaly detection
+        anomaly_score = self.calculate_anomaly_score(event)
+        if anomaly_score < self.threshold_score:
+            return {"threat_level": "low", "source": "statistical"}
+
+        # Layer 3: LLM contextual analysis (only for suspicious events)
+        llm_analysis = await self.llm_analyze(event)
+
+        return {
+            "threat_level": llm_analysis["threat_level"],
+            "source": "llm-enhanced",
+            "explanation": llm_analysis["reasoning"],
+            "anomaly_score": anomaly_score
+        }
+
+    def is_known_threat(self, event: Dict) -> bool:
+        """Fast rule-based detection for known threats."""
+        # Implement your rule-based checks here
+        pass
+
+    def calculate_anomaly_score(self, event: Dict) -> float:
+        """Statistical anomaly detection."""
+        # Implement statistical analysis here
+        pass
+
+    async def llm_analyze(self, event: Dict) -> Dict:
+        """LLM-based contextual analysis."""
+        prompt = self.build_analysis_prompt(event)
+        response = await self.llm_client.analyze(prompt)
+        return self.parse_llm_response(response)</code></pre>
+
+      <h2>Key Takeaways for Security Teams</h2>
+
+      <ul>
+        <li><strong>Start Small:</strong> Don't replace your entire detection stack. Use LLMs for specific,
+        high-value use cases first</li>
+        <li><strong>Validate Everything:</strong> Never trust LLM output without verification. Build in
+        human review checkpoints</li>
+        <li><strong>Monitor Costs:</strong> Track API usage and cost per detection. Make sure the ROI makes sense</li>
+        <li><strong>Combine Approaches:</strong> The best results come from hybrid systems that leverage the
+        strengths of multiple detection methods</li>
+        <li><strong>Stay Current:</strong> This field is evolving rapidly. What's expensive today might be
+        commodity tomorrow</li>
+      </ul>
+
+      <h2>Looking Forward</h2>
+
+      <p>
+        We're still in the early days of LLMs in cybersecurity. The next wave will likely bring:
+      </p>
+
+      <ul>
+        <li>Specialized security-focused models trained on threat intelligence data</li>
+        <li>Faster inference times making real-time LLM analysis viable</li>
+        <li>Better integration with existing security tools and workflows</li>
+        <li>More transparent explanations of how LLMs reach their conclusions</li>
+      </ul>
+
+      <p>
+        The key is approaching this technology with informed optimism—leveraging its strengths while remaining
+        aware of its limitations. LLMs aren't replacing security analysts; they're augmenting them, handling
+        the heavy lifting of log analysis and pattern recognition so humans can focus on strategic decision-making.
+      </p>
+
+      <div class="wave-divider" style="margin: 3rem 0;"></div>
+
+      <p class="text-muted">
+        <em>Want to discuss LLM applications in security? Find me on
+        <a href="https://linkedin.com/in/sbahamon" target="_blank" rel="noopener">LinkedIn</a> or
+        <a href="https://github.com/sbahamon" target="_blank" rel="noopener">GitHub</a>.</em>
+      </p>
+
+      <nav style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+          <a href="/posts/index.html" class="btn btn-secondary">← All Posts</a>
+          <a href="/posts/teaching-security-ai.html" class="btn btn-secondary">Next Post →</a>
+        </div>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://github.com/sbahamon" aria-label="GitHub" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/sbahamon" aria-label="LinkedIn" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <p>&copy; 2025 Steffany Bahamon. Connecting Lake Michigan to the Atlantic Ocean.</p>
+    </div>
+  </footer>
+
+  <script src="/js/language.js" defer></script>
+  <script>
+    document.getElementById('mobile-menu-toggle')?.addEventListener('click', function() {
+      document.getElementById('nav-main')?.classList.toggle('active');
+    });
+
+    function copyCode(button) {
+      const codeBlock = button.parentElement.nextElementSibling;
+      const code = codeBlock.textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        button.textContent = 'Copied!';
+        setTimeout(() => button.textContent = 'Copy', 2000);
+      });
+    }
+  </script>
+
+  <!-- Syntax highlighting (using highlight.js from CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</body>
+</html>

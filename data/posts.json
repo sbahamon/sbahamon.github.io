@@ -1,0 +1,56 @@
+[
+  {
+    "title": "How LLMs Are Changing Threat Detection",
+    "url": "/posts/llms-threat-detection.html",
+    "date": "2025-01-15",
+    "tags": ["AI", "Threat Detection", "Machine Learning"],
+    "excerpt": "Large Language Models are revolutionizing how we detect and respond to cybersecurity threats. Exploring the promises, pitfalls, and practical applications of AI in modern security operations.",
+    "readingTime": "8 min read",
+    "lang": "en"
+  },
+  {
+    "title": "Teaching Security in the Age of AI",
+    "url": "/posts/teaching-security-ai.html",
+    "date": "2025-01-08",
+    "tags": ["Education", "AI", "Career Development"],
+    "excerpt": "After 600+ classes, here's what I've learned about teaching cybersecurity fundamentals while preparing students for an AI-augmented future in security operations.",
+    "readingTime": "6 min read",
+    "lang": "en"
+  },
+  {
+    "title": "Building a Home Lab for Security Research",
+    "url": "/posts/home-lab-security.html",
+    "date": "2024-12-20",
+    "tags": ["Home Lab", "Infrastructure", "Research"],
+    "excerpt": "A comprehensive guide to setting up an affordable home lab for cybersecurity research, from virtualization basics to building realistic network topologies.",
+    "readingTime": "10 min read",
+    "lang": "en"
+  },
+  {
+    "title": "Cómo los LLMs Están Cambiando la Detección de Amenazas",
+    "url": "/es/posts/llms-threat-detection.html",
+    "date": "2025-01-15",
+    "tags": ["IA", "Detección de Amenazas", "Aprendizaje Automático"],
+    "excerpt": "Los Modelos de Lenguaje de Gran Escala están revolucionando cómo detectamos y respondemos a amenazas de ciberseguridad. Explorando las promesas, dificultades y aplicaciones prácticas de la IA en operaciones de seguridad modernas.",
+    "readingTime": "8 min de lectura",
+    "lang": "es"
+  },
+  {
+    "title": "Enseñando Seguridad en la Era de la IA",
+    "url": "/es/posts/teaching-security-ai.html",
+    "date": "2025-01-08",
+    "tags": ["Educación", "IA", "Desarrollo Profesional"],
+    "excerpt": "Después de 600+ clases, esto es lo que he aprendido sobre enseñar fundamentos de ciberseguridad mientras preparo a estudiantes para un futuro aumentado por IA en operaciones de seguridad.",
+    "readingTime": "6 min de lectura",
+    "lang": "es"
+  },
+  {
+    "title": "Construyendo un Laboratorio en Casa para Investigación de Seguridad",
+    "url": "/es/posts/home-lab-security.html",
+    "date": "2024-12-20",
+    "tags": ["Laboratorio en Casa", "Infraestructura", "Investigación"],
+    "excerpt": "Una guía completa para configurar un laboratorio en casa asequible para investigación de ciberseguridad, desde conceptos básicos de virtualización hasta construcción de topologías de red realistas.",
+    "readingTime": "10 min de lectura",
+    "lang": "es"
+  }
+]

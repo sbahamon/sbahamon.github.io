@@ -36,19 +36,18 @@ A bilingual (EN/ES) personal website featuring the "Lake & Ocean" design system�
 ├── now.html                      # English "now" page
 ├── projects.html                 # English projects page
 ├── posts/                        # Generated HTML (DO NOT EDIT DIRECTLY)
-│   ├── index.html                # Blog listing
-│   ├── llms-threat-detection.html
-│   ├── teaching-security-ai.html
-│   └── home-lab-security.html
+│   └── index.html                # Blog listing
 ├── posts-markdown/               # 📝 WRITE YOUR POSTS HERE
 │   ├── en/                       # English Markdown posts
-│   │   ├── llms-threat-detection.md
-│   │   ├── teaching-security-ai.md
-│   │   └── home-lab-security.md
 │   └── es/                       # Spanish Markdown posts
 ├── es/                           # Spanish versions
 │   ├── index.html                # Spanish homepage
-│   ├── posts/                    # Generated Spanish HTML
+│   ├── about.html                # Spanish about page
+│   ├── now.html                  # Spanish "now" page
+│   ├── projects.html             # Spanish projects page
+│   ├── posts/
+│   │   ├── index.html            # Spanish blog listing
+│   │   └── *.html                # Generated Spanish blog posts
 │   └── README.md                 # Translation guide
 ├── styles/
 │   ├── main.css                  # Main stylesheet with Lake & Ocean design system
@@ -191,9 +190,17 @@ npm run build
 npm run watch
 ```
 
-### Updating the "Now" Page
+### Updating Static Pages
 
-Simply edit `now.html` (English) and `es/now.html` (Spanish) directly. Don't forget to update the "Last updated" date!
+Edit these pages directly in your editor:
+
+**English pages:**
+- `index.html`, `about.html`, `now.html`, `projects.html`, `posts/index.html`
+
+**Spanish pages:**
+- `es/index.html`, `es/about.html`, `es/now.html`, `es/projects.html`, `es/posts/index.html`
+
+Remember to update the "Last updated" date on "Now" pages when making changes!
 
 ### Adding a Project
 
@@ -252,16 +259,31 @@ Navigation is duplicated in each HTML file. To update:
 2. Use find-and-replace to update all other files
 3. Files to update: all HTML files in root, `/posts/`, and `/es/` directories
 
-## Completing Spanish Translations
+## Bilingual Content
 
-The Spanish site structure is set up, but most pages need translation:
+### Main Pages (Complete ✅)
 
-1. Copy English page to `/es/` directory
-2. Change `<html lang="en">` to `<html lang="es">`
-3. Update `hreflang` alternate link
-4. Translate all content
-5. Update all internal links to point to `/es/` URLs
-6. See `/es/README.md` for detailed translation guidelines
+All main pages are fully translated and functional in both languages:
+
+**English:** `index.html`, `about.html`, `now.html`, `projects.html`, `posts/index.html`
+**Spanish:** `es/index.html`, `es/about.html`, `es/now.html`, `es/projects.html`, `es/posts/index.html`
+
+Both versions include:
+- Fully translated navigation and content
+- Working theme toggle (Miami Summer / Chicago Winter)
+- Language switcher that correctly links to alternate version
+- Mobile-responsive design
+
+### Blog Posts (Per-Post Translation)
+
+Blog posts are translated individually as needed:
+
+1. Write English post: `posts-markdown/en/my-post.md`
+2. Commit → generates `/posts/my-post.html`
+3. Create Spanish translation: `posts-markdown/es/my-post.md`
+4. Commit → generates `/es/posts/my-post.html`
+
+See `WRITING_POSTS.md` for detailed instructions on writing bilingual blog posts.
 
 ## Browser Support
 

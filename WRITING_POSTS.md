@@ -231,6 +231,8 @@ print(response.json())
 
 ## Bilingual Posts (English & Spanish)
 
+**Note:** All main pages (index, about, now, projects, posts/index) are already fully translated into Spanish and located in the `/es/` directory. This section covers translating individual blog posts.
+
 ### Creating Spanish Versions
 
 1. **Create Spanish Markdown file:**
@@ -284,59 +286,77 @@ nextPost: "/posts/next-post-slug.html"
 - Set to `null` for first/last posts in series
 - Spanish posts should link to Spanish posts
 
-## Examples from Existing Posts
+## Example Post Structure
 
-### Example 1: Technical Post with Code
+Here's a complete example of a technical blog post with code:
 
-See: `posts-markdown/en/llms-threat-detection.md`
-
-```markdown
+````markdown
 ---
-title: "How LLMs Are Changing Threat Detection"
-date: 2025-01-15
-tags: ["AI", "Threat Detection", "Machine Learning"]
-excerpt: "Large Language Models are revolutionizing..."
-readingTime: "8 min read"
+title: "Building Secure APIs with Python"
+date: 2025-02-01
+tags: ["Python", "Security", "API Development"]
+excerpt: "Learn how to build secure REST APIs using Python, FastAPI, and modern authentication patterns."
+readingTime: "10 min read"
 lang: en
 prevPost: null
-nextPost: "/posts/teaching-security-ai.html"
+nextPost: null
 ---
 
-Opening paragraph sets context...
+Modern web applications rely on APIs to communicate between services. In this post, we'll explore how to build secure APIs using Python and FastAPI.
 
-## Section with code example
+## Why API Security Matters
 
-Here's how to use LLMs in Python:
+API vulnerabilities are among the OWASP Top 10 for a reason...
 
-\```python
-from openai import OpenAI
+## Setting Up FastAPI
 
-def analyze_logs(log_data):
-    client = OpenAI()
-    # Analysis code here
-    pass
-\```
+First, install the required dependencies:
 
-Continue with explanations...
+```bash
+pip install fastapi uvicorn python-jose passlib
 ```
 
-### Example 2: Tutorial Post
+Then create your basic application:
 
-See: `posts-markdown/en/home-lab-security.md`
+```python
+from fastapi import FastAPI, Depends, HTTPException
+from fastapi.security import HTTPBearer
 
-- Multiple code blocks in different languages
-- Step-by-step instructions with numbered lists
-- Mixed bash, Python, and configuration examples
-- Blockquotes for important notes
+app = FastAPI()
+security = HTTPBearer()
 
-### Example 3: Opinion/Analysis Post
+@app.get("/")
+async def root():
+    return {"message": "Hello, secure world!"}
+```
 
-See: `posts-markdown/en/teaching-security-ai.md`
+## Implementing Authentication
 
-- More narrative structure
-- Blockquotes for key insights
-- Fewer code examples
-- Focus on concepts and experiences
+Here's a complete JWT authentication example:
+
+```python
+from datetime import datetime, timedelta
+from jose import JWTError, jwt
+
+SECRET_KEY = "your-secret-key-here"  # Use environment variable in production
+ALGORITHM = "HS256"
+
+def create_access_token(data: dict):
+    to_encode = data.copy()
+    expire = datetime.utcnow() + timedelta(minutes=30)
+    to_encode.update({"exp": expire})
+    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+```
+
+> **Important:** Never hardcode secrets in production code. Always use environment variables or a secrets manager.
+
+## Key Takeaways
+
+- Always validate input on the server side
+- Use HTTPS in production
+- Implement rate limiting
+- Keep dependencies updated
+````
 
 ## Manual Build Commands
 

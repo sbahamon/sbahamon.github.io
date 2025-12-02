@@ -18,16 +18,124 @@ This is Steffany Bahamon's personal website featuring:
 **Primary branch:** `main`
 **Current feature branch:** `feature/lake-ocean-design`
 
+## "Lake & Ocean" Design System
+
+### Design Concept
+
+The design connects **Lake Michigan (Chicago)** to the **Atlantic Ocean (Miami)**—two bodies of water that shaped Steffany's journey. The aesthetic is:
+
+- **Calm and elegant** - Like still water, not busy
+- **Fluid** - Gentle curves, flowing transitions
+- **Subtly layered** - Depth without complexity
+- **Warm in light mode** - Miami summer energy
+- **Cool in dark mode** - Chicago winter contemplation
+- **Grounded** - Professional and trustworthy
+
+**Key principle:** Water references are abstract and elegant, never kitschy. No anchors, ship wheels, or overtly nautical elements.
+
+### Color Palette
+
+**Miami Summer (Light Mode):**
+
+```css
+--color-bg: #FFFCF7         /* Warm white with hint of sand */
+--color-text: #0F172A       /* Deep navy/midnight */
+--color-accent: #0D9488     /* Warm teal (tropical waters) */
+--color-secondary: #D4C4A8  /* Sandy beige */
+--color-highlight: #99F6E4  /* Bright seafoam */
+```
+
+Warm undertones throughout evoke Miami sunshine.
+
+**Chicago Winter (Dark Mode):**
+
+```css
+--color-bg: #0A0F1E         /* Deep midnight blue (Lake Michigan at night) */
+--color-text: #F1F5F9       /* Cool off-white */
+--color-accent: #14B8A6     /* Cooler teal (winter lake water) */
+--color-secondary: #64748B  /* Muted steel gray */
+--color-highlight: #CCFBF1  /* Icy seafoam */
+```
+
+Cool undertones throughout evoke Chicago winter.
+
+**Accessibility:** All color combinations meet WCAG AA (4.5:1 for body text, 3:1 for large text/UI).
+
+### Typography
+
+**Font choices:**
+
+- **Headings:** Cormorant Garamond (refined serif, fluid, slightly editorial)
+- **Body:** IBM Plex Sans (clean, highly readable sans-serif)
+- **Code:** JetBrains Mono (monospace for code blocks)
+
+**Loading strategy:**
+
+- Google Fonts with `font-display: swap`
+- System font stack fallbacks
+- Limited font weights for performance
+
+### Visual Motifs
+
+**Wave patterns:** Gentle, layered wave shapes as section dividers (`.wave-divider`)
+
+**Horizon lines:** Simple horizontal lines evoking water meeting sky
+
+**Flowing curves:** Subtle curved elements in containers, buttons (`border-radius: var(--radius-lg)`)
+
+**Water texture:** Very subtle gradients suggesting light on water (used sparingly)
+
+**What to avoid:** Anchors, ship wheels, fish, or anything overtly "nautical themed."
+
+### Layout Principles
+
+- **Generous whitespace** - Content-focused, minimal distractions
+- **Asymmetric balance** - Not rigidly centered
+- **Optimal line length** - Max 65-70 characters for readability (`max-width: var(--content-max-width)`)
+- **Mobile-first responsive** - Works beautifully on all devices
+- **Fluid typography** - Uses `clamp()` for responsive sizing
+
+### Design Implementation
+
+All design tokens are CSS custom properties in `styles/main.css`:
+
+```css
+:root {
+  /* Colors */
+  --color-bg: #FFFCF7;
+  --color-text: #0F172A;
+  /* ... */
+
+  /* Typography */
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+
+  /* Spacing */
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2.5rem;
+  /* ... */
+}
+
+[data-theme="dark"] {
+  /* Dark mode overrides */
+}
+```
+
+Theme switching handled by `js/theme.js`, which toggles `data-theme` attribute.
+
 ## Core Design Philosophy
 
 ### No Frameworks, By Design
 
 This site intentionally uses **pure HTML, CSS, and vanilla JavaScript**. This decision is:
+
 - **Intentional:** For performance, simplicity, and longevity
 - **Non-negotiable:** Do not suggest React, Vue, Next.js, etc.
 - **Well-documented:** See `prompt.md` for full rationale
 
 The owner values:
+
 1. Fast load times (< 1 second time to interactive)
 2. Zero build complexity (HTML is committed to repo)
 3. Long-term maintainability (no framework churn)

@@ -1,0 +1,20 @@
+{
+  "name": "sbahamon-website",
+  "version": "1.0.0",
+  "description": "Personal website with Lake & Ocean design - Markdown to HTML build system",
+  "private": true,
+  "scripts": {
+    "build": "node build-posts.js",
+    "watch": "node build-posts.js --watch"
+  },
+  "keywords": ["blog", "markdown", "static-site"],
+  "author": "Steffany Bahamon",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "markdown-it": "^14.0.0"
+  },
+  "devDependencies": {
+    "chokidar": "^3.5.3"
+  }
+}

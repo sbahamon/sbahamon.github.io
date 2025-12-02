@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Complete guide to building an affordable home lab for cybersecurity research and learning">
+  <meta name="description" content="A comprehensive guide to setting up an affordable home lab for cybersecurity research, from virtualization basics to building realistic network topologies.">
   <title>Building a Home Lab for Security Research - Steffany Bahamon</title>
 
   <!-- Favicon -->
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
+  <!-- Alternate language -->
   <link rel="alternate" hreflang="es" href="/es/posts/home-lab-security.html">
+
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="/styles/main.css">
   <link rel="stylesheet" href="/styles/syntax.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,11 +46,10 @@
   </header>
 
   <main id="main" class="main-content">
-    <article>
-      <header>
+    <article>      <header>
         <h1>Building a Home Lab for Security Research</h1>
         <div class="post-meta">
-          <time datetime="2024-12-20">December 20, 2024</time>
+          <time datetime="Thu Dec 19 2024 18:00:00 GMT-0600 (Central Standard Time)">December 19, 2024</time>
           <span class="reading-time">10 min read</span>
         </div>
         <div class="tags">
@@ -59,79 +61,49 @@
 
       <div class="wave-divider"></div>
 
-      <p>
-        One of the most common questions I get from students: "How can I practice security skills at home without
-        a corporate lab?" The answer: build your own. You don't need enterprise gear—a decent laptop and some
-        open-source tools will get you surprisingly far.
-      </p>
-
-      <h2>Why Build a Home Lab?</h2>
-
-      <ul>
-        <li><strong>Hands-on learning:</strong> Reading about network attacks is different from actually performing them</li>
-        <li><strong>Safe environment:</strong> Break things, make mistakes, and learn without consequences</li>
-        <li><strong>Portfolio building:</strong> Document your lab projects for future job interviews</li>
-        <li><strong>Career advancement:</strong> Practice skills that are hard to learn in production environments</li>
-      </ul>
-
-      <h2>What You'll Need</h2>
-
-      <h3>Hardware Requirements (Minimum)</h3>
-
-      <ul>
-        <li><strong>Host machine:</strong> Laptop or desktop with at least 16GB RAM, 500GB storage, modern CPU</li>
-        <li><strong>Network gear (optional):</strong> Old router/switch for physical network testing (~$30 used)</li>
-        <li><strong>USB drives:</strong> For OS installations and data transfer</li>
-      </ul>
-
-      <h3>Hardware Requirements (Recommended)</h3>
-
-      <ul>
-        <li><strong>32GB+ RAM:</strong> Run multiple VMs comfortably</li>
-        <li><strong>1TB+ SSD:</strong> Fast storage makes a huge difference</li>
-        <li><strong>Dedicated lab machine:</strong> Keep your daily driver separate from your testing environment</li>
-      </ul>
-
-      <h3>Software Stack (All Free)</h3>
-
-      <ul>
-        <li><strong>Hypervisor:</strong> VirtualBox, VMware Player, or Proxmox</li>
-        <li><strong>Operating Systems:</strong> Kali Linux, Ubuntu Server, Windows 10 (evaluation), pfSense</li>
-        <li><strong>Security Tools:</strong> Metasploit, Wireshark, Nmap, Burp Suite Community, OWASP ZAP</li>
-        <li><strong>Vulnerable VMs:</strong> Metasploitable, DVWA, VulnHub machines</li>
-      </ul>
-
-      <h2>Lab Architecture: Three Tiers</h2>
-
-      <p>
-        I recommend building your lab in three stages, each adding complexity:
-      </p>
-
-      <h3>Tier 1: Basic Virtualization (Week 1)</h3>
-
-      <p>
-        Start simple: one host machine running VirtualBox with 2-3 VMs.
-      </p>
-
-      <pre><code class="language-plaintext">Host Machine (Your Laptop)
+<p>One of the most common questions I get from students: “How can I practice security skills at home without a corporate lab?” The answer: build your own. You don’t need enterprise gear—a decent laptop and some open-source tools will get you surprisingly far.</p>
+<h2>Why Build a Home Lab?</h2>
+<ul>
+<li><strong>Hands-on learning:</strong> Reading about network attacks is different from actually performing them</li>
+<li><strong>Safe environment:</strong> Break things, make mistakes, and learn without consequences</li>
+<li><strong>Portfolio building:</strong> Document your lab projects for future job interviews</li>
+<li><strong>Career advancement:</strong> Practice skills that are hard to learn in production environments</li>
+</ul>
+<h2>What You’ll Need</h2>
+<h3>Hardware Requirements (Minimum)</h3>
+<ul>
+<li><strong>Host machine:</strong> Laptop or desktop with at least 16GB RAM, 500GB storage, modern CPU</li>
+<li><strong>Network gear (optional):</strong> Old router/switch for physical network testing (~$30 used)</li>
+<li><strong>USB drives:</strong> For OS installations and data transfer</li>
+</ul>
+<h3>Hardware Requirements (Recommended)</h3>
+<ul>
+<li><strong>32GB+ RAM:</strong> Run multiple VMs comfortably</li>
+<li><strong>1TB+ SSD:</strong> Fast storage makes a huge difference</li>
+<li><strong>Dedicated lab machine:</strong> Keep your daily driver separate from your testing environment</li>
+</ul>
+<h3>Software Stack (All Free)</h3>
+<ul>
+<li><strong>Hypervisor:</strong> VirtualBox, VMware Player, or Proxmox</li>
+<li><strong>Operating Systems:</strong> Kali Linux, Ubuntu Server, Windows 10 (evaluation), pfSense</li>
+<li><strong>Security Tools:</strong> Metasploit, Wireshark, Nmap, Burp Suite Community, OWASP ZAP</li>
+<li><strong>Vulnerable VMs:</strong> Metasploitable, DVWA, VulnHub machines</li>
+</ul>
+<h2>Lab Architecture: Three Tiers</h2>
+<p>I recommend building your lab in three stages, each adding complexity:</p>
+<h3>Tier 1: Basic Virtualization (Week 1)</h3>
+<p>Start simple: one host machine running VirtualBox with 2-3 VMs.</p>
+<pre><code>Host Machine (Your Laptop)
 │
 ├── VirtualBox
     ├── Kali Linux (Attacker)
     ├── Metasploitable 2 (Victim)
-    └── Ubuntu Server (Monitoring)</code></pre>
-
-      <p>
-        This setup lets you practice basic penetration testing in a completely isolated environment. No internet
-        required, minimal resources needed.
-      </p>
-
-      <h3>Tier 2: Segmented Networks (Week 2-3)</h3>
-
-      <p>
-        Add network segmentation to simulate real-world infrastructure:
-      </p>
-
-      <pre><code class="language-plaintext">Host Machine
+    └── Ubuntu Server (Monitoring)
+</code></pre>
+<p>This setup lets you practice basic penetration testing in a completely isolated environment. No internet required, minimal resources needed.</p>
+<h3>Tier 2: Segmented Networks (Week 2-3)</h3>
+<p>Add network segmentation to simulate real-world infrastructure:</p>
+<pre><code>Host Machine
 │
 ├── VirtualBox
     ├── pfSense (Firewall/Router)
@@ -141,193 +113,136 @@
     │   └── Web Server (DVWA)
     └── Network: Internal (192.168.30.0/24)
         ├── Domain Controller (Windows Server)
-        └── Workstation (Windows 10)</code></pre>
-
-      <p>
-        Now you can practice network pivoting, firewall rule testing, and realistic attack scenarios.
-      </p>
-
-      <h3>Tier 3: Active Directory & Monitoring (Week 4+)</h3>
-
-      <p>
-        Build an enterprise-like environment with Active Directory, logging, and monitoring:
-      </p>
-
-      <ul>
-        <li>Windows Server 2019 as Domain Controller</li>
-        <li>2-3 Windows 10 clients joined to the domain</li>
-        <li>Security Onion or ELK stack for SIEM</li>
-        <li>Vulnerable services (intentionally misconfigured)</li>
-      </ul>
-
-      <p>
-        This tier lets you practice Active Directory attacks, lateral movement, and security monitoring that mirrors
-        real corporate environments.
-      </p>
-
-      <h2>Building Your First Lab: Step-by-Step</h2>
-
-      <h3>Step 1: Install VirtualBox</h3>
-
-      <pre><code class="language-bash"># On Ubuntu/Debian
+        └── Workstation (Windows 10)
+</code></pre>
+<p>Now you can practice network pivoting, firewall rule testing, and realistic attack scenarios.</p>
+<h3>Tier 3: Active Directory &amp; Monitoring (Week 4+)</h3>
+<p>Build an enterprise-like environment with Active Directory, logging, and monitoring:</p>
+<ul>
+<li>Windows Server 2019 as Domain Controller</li>
+<li>2-3 Windows 10 clients joined to the domain</li>
+<li>Security Onion or ELK stack for SIEM</li>
+<li>Vulnerable services (intentionally misconfigured)</li>
+</ul>
+<p>This tier lets you practice Active Directory attacks, lateral movement, and security monitoring that mirrors real corporate environments.</p>
+<h2>Building Your First Lab: Step-by-Step</h2>
+<h3>Step 1: Install VirtualBox</h3>
+<pre><code class="language-bash"># On Ubuntu/Debian
 sudo apt update
 sudo apt install virtualbox virtualbox-ext-pack
 
 # On macOS (via Homebrew)
 brew install --cask virtualbox
 
-# On Windows: Download from virtualbox.org</code></pre>
-
-      <h3>Step 2: Download OS Images</h3>
-
-      <ul>
-        <li><strong>Kali Linux:</strong> <code>kali.org/get-kali</code></li>
-        <li><strong>Metasploitable 2:</strong> <code>sourceforge.net/projects/metasploitable</code></li>
-        <li><strong>Windows 10 Evaluation:</strong> <code>microsoft.com/en-us/evalcenter</code></li>
-      </ul>
-
-      <h3>Step 3: Create Your First VM (Kali Linux)</h3>
-
-      <ol>
-        <li>Open VirtualBox → New</li>
-        <li>Name: Kali-Lab, Type: Linux, Version: Debian (64-bit)</li>
-        <li>Memory: 4GB (4096 MB)</li>
-        <li>Hard disk: Create virtual hard disk now → VDI → Dynamically allocated → 80GB</li>
-        <li>Settings → Storage → Controller: IDE → Add optical drive → Select Kali ISO</li>
-        <li>Settings → Network → Adapter 1 → Attached to: NAT Network (create one if needed)</li>
-        <li>Start → Install Kali Linux</li>
-      </ol>
-
-      <h3>Step 4: Configure Networking</h3>
-
-      <p>
-        Create an isolated NAT Network for your lab:
-      </p>
-
-      <ol>
-        <li>VirtualBox → File → Preferences → Network</li>
-        <li>NAT Networks → Add (green plus icon)</li>
-        <li>Name: LabNetwork</li>
-        <li>Network CIDR: 192.168.100.0/24</li>
-        <li>Supports DHCP: Checked</li>
-      </ol>
-
-      <p>
-        Assign all your VMs to this network to keep them isolated from your home network.
-      </p>
-
-      <h2>Essential Lab Exercises</h2>
-
-      <h3>Exercise 1: Network Scanning</h3>
-
-      <pre><code class="language-bash"># From Kali, scan your lab network
+# On Windows: Download from virtualbox.org
+</code></pre>
+<h3>Step 2: Download OS Images</h3>
+<ul>
+<li><strong>Kali Linux:</strong> <code>kali.org/get-kali</code></li>
+<li><strong>Metasploitable 2:</strong> <code>sourceforge.net/projects/metasploitable</code></li>
+<li><strong>Windows 10 Evaluation:</strong> <code>microsoft.com/en-us/evalcenter</code></li>
+</ul>
+<h3>Step 3: Create Your First VM (Kali Linux)</h3>
+<ol>
+<li>Open VirtualBox → New</li>
+<li>Name: Kali-Lab, Type: Linux, Version: Debian (64-bit)</li>
+<li>Memory: 4GB (4096 MB)</li>
+<li>Hard disk: Create virtual hard disk now → VDI → Dynamically allocated → 80GB</li>
+<li>Settings → Storage → Controller: IDE → Add optical drive → Select Kali ISO</li>
+<li>Settings → Network → Adapter 1 → Attached to: NAT Network (create one if needed)</li>
+<li>Start → Install Kali Linux</li>
+</ol>
+<h3>Step 4: Configure Networking</h3>
+<p>Create an isolated NAT Network for your lab:</p>
+<ol>
+<li>VirtualBox → File → Preferences → Network</li>
+<li>NAT Networks → Add (green plus icon)</li>
+<li>Name: LabNetwork</li>
+<li>Network CIDR: 192.168.100.0/24</li>
+<li>Supports DHCP: Checked</li>
+</ol>
+<p>Assign all your VMs to this network to keep them isolated from your home network.</p>
+<h2>Essential Lab Exercises</h2>
+<h3>Exercise 1: Network Scanning</h3>
+<pre><code class="language-bash"># From Kali, scan your lab network
 nmap -sn 192.168.100.0/24              # Host discovery
 nmap -sV -sC 192.168.100.10            # Service enumeration
-nmap -p- --open 192.168.100.10         # All open ports</code></pre>
-
-      <h3>Exercise 2: Vulnerability Exploitation</h3>
-
-      <pre><code class="language-bash"># On Kali, target Metasploitable 2
+nmap -p- --open 192.168.100.10         # All open ports
+</code></pre>
+<h3>Exercise 2: Vulnerability Exploitation</h3>
+<pre><code class="language-bash"># On Kali, target Metasploitable 2
 msfconsole
 search vsftpd                           # Find exploit
 use exploit/unix/ftp/vsftpd_234_backdoor
 set RHOSTS 192.168.100.10
-exploit                                 # Get shell!</code></pre>
-
-      <h3>Exercise 3: Log Analysis</h3>
-
-      <p>
-        On your monitoring VM, analyze authentication logs:
-      </p>
-
-      <pre><code class="language-bash"># View recent SSH attempts
+exploit                                 # Get shell!
+</code></pre>
+<h3>Exercise 3: Log Analysis</h3>
+<p>On your monitoring VM, analyze authentication logs:</p>
+<pre><code class="language-bash"># View recent SSH attempts
 sudo tail -f /var/log/auth.log | grep sshd
 
 # Count failed login attempts
-sudo grep "Failed password" /var/log/auth.log | wc -l
+sudo grep &quot;Failed password&quot; /var/log/auth.log | wc -l
 
 # Identify attacking IPs
-sudo grep "Failed password" /var/log/auth.log | \
-    awk '{print $(NF-3)}' | sort | uniq -c | sort -rn</code></pre>
-
-      <h2>Advanced Topics</h2>
-
-      <h3>Automation with Infrastructure as Code</h3>
-
-      <p>
-        Once you're comfortable, automate your lab setup with Vagrant:
-      </p>
-
-      <pre><code class="language-ruby"># Vagrantfile
-Vagrant.configure("2") do |config|
+sudo grep &quot;Failed password&quot; /var/log/auth.log | \
+    awk &#039;{print $(NF-3)}&#039; | sort | uniq -c | sort -rn
+</code></pre>
+<h2>Advanced Topics</h2>
+<h3>Automation with Infrastructure as Code</h3>
+<p>Once you’re comfortable, automate your lab setup with Vagrant:</p>
+<pre><code class="language-ruby"># Vagrantfile
+Vagrant.configure(&quot;2&quot;) do |config|
   # Kali Linux attacker
-  config.vm.define "kali" do |kali|
-    kali.vm.box = "kalilinux/rolling"
-    kali.vm.network "private_network", ip: "192.168.100.10"
+  config.vm.define &quot;kali&quot; do |kali|
+    kali.vm.box = &quot;kalilinux/rolling&quot;
+    kali.vm.network &quot;private_network&quot;, ip: &quot;192.168.100.10&quot;
   end
 
   # Victim machine
-  config.vm.define "victim" do |victim|
-    victim.vm.box = "rapid7/metasploitable3-ub1404"
-    victim.vm.network "private_network", ip: "192.168.100.20"
+  config.vm.define &quot;victim&quot; do |victim|
+    victim.vm.box = &quot;rapid7/metasploitable3-ub1404&quot;
+    victim.vm.network &quot;private_network&quot;, ip: &quot;192.168.100.20&quot;
   end
-end</code></pre>
-
-      <h3>Persistent Storage for Notes</h3>
-
-      <p>
-        Document everything! I use this structure:
-      </p>
-
-      <pre><code class="language-plaintext">lab-notes/
+end
+</code></pre>
+<h3>Persistent Storage for Notes</h3>
+<p>Document everything! I use this structure:</p>
+<pre><code>lab-notes/
 ├── network-topology.md
 ├── vm-configurations.md
 ├── exercises/
 │   ├── 01-network-scanning.md
 │   ├── 02-exploitation.md
 │   └── 03-log-analysis.md
-└── screenshots/</code></pre>
-
-      <h2>Common Mistakes to Avoid</h2>
-
-      <ol>
-        <li><strong>Not isolating your lab:</strong> Always use NAT Network or host-only networking. Never bridge
-        vulnerable VMs to your home network.</li>
-        <li><strong>Skipping snapshots:</strong> Take snapshots before major changes. You'll break things—snapshots
-        let you recover quickly.</li>
-        <li><strong>Overcomplicating early on:</strong> Start simple. Master Tier 1 before moving to Tier 2.</li>
-        <li><strong>Ignoring resource limits:</strong> Don't run 10 VMs on 8GB RAM. It'll be painfully slow.</li>
-        <li><strong>Not documenting your work:</strong> Future-you will forget. Document as you go.</li>
-      </ol>
-
-      <h2>Resources & Next Steps</h2>
-
-      <ul>
-        <li><strong>VulnHub:</strong> Free vulnerable VMs for practice</li>
-        <li><strong>HackTheBox:</strong> Online labs when you're ready for challenges</li>
-        <li><strong>TryHackMe:</strong> Guided learning paths with virtual labs</li>
-        <li><strong>/r/homelab:</strong> Community for lab-building enthusiasts</li>
-      </ul>
-
-      <h2>Final Thoughts</h2>
-
-      <p>
-        Building a home lab is one of the best investments you can make in your security career. It's not just
-        about the technical skills—it's about developing problem-solving abilities, learning to research solutions,
-        and building confidence in your capabilities.
-      </p>
-
-      <p>
-        Start small, document everything, and gradually increase complexity. Within a few weeks, you'll have a
-        powerful learning environment that rivals professional training labs.
-      </p>
+└── screenshots/
+</code></pre>
+<h2>Common Mistakes to Avoid</h2>
+<ol>
+<li><strong>Not isolating your lab:</strong> Always use NAT Network or host-only networking. Never bridge vulnerable VMs to your home network.</li>
+<li><strong>Skipping snapshots:</strong> Take snapshots before major changes. You’ll break things—snapshots let you recover quickly.</li>
+<li><strong>Overcomplicating early on:</strong> Start simple. Master Tier 1 before moving to Tier 2.</li>
+<li><strong>Ignoring resource limits:</strong> Don’t run 10 VMs on 8GB RAM. It’ll be painfully slow.</li>
+<li><strong>Not documenting your work:</strong> Future-you will forget. Document as you go.</li>
+</ol>
+<h2>Resources &amp; Next Steps</h2>
+<ul>
+<li><strong>VulnHub:</strong> Free vulnerable VMs for practice</li>
+<li><strong>HackTheBox:</strong> Online labs when you’re ready for challenges</li>
+<li><strong>TryHackMe:</strong> Guided learning paths with virtual labs</li>
+<li><strong>/r/homelab:</strong> Community for lab-building enthusiasts</li>
+</ul>
+<h2>Final Thoughts</h2>
+<p>Building a home lab is one of the best investments you can make in your security career. It’s not just about the technical skills—it’s about developing problem-solving abilities, learning to research solutions, and building confidence in your capabilities.</p>
+<p>Start small, document everything, and gradually increase complexity. Within a few weeks, you’ll have a powerful learning environment that rivals professional training labs.</p>
 
       <div class="wave-divider" style="margin: 3rem 0;"></div>
 
       <p class="text-muted">
-        <em>Questions about setting up your lab? Reach out on
-        <a href="https://github.com/sbahamon" target="_blank" rel="noopener">GitHub</a> or
-        <a href="https://linkedin.com/in/sbahamon" target="_blank" rel="noopener">LinkedIn</a>.</em>
+        <em>Connect with me on
+        <a href="https://linkedin.com/in/sbahamon" target="_blank" rel="noopener">LinkedIn</a> or
+        <a href="https://github.com/sbahamon" target="_blank" rel="noopener">GitHub</a>.</em>
       </p>
 
       <nav style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
@@ -354,6 +269,15 @@ end</code></pre>
     document.getElementById('mobile-menu-toggle')?.addEventListener('click', function() {
       document.getElementById('nav-main')?.classList.toggle('active');
     });
+
+    function copyCode(button) {
+      const codeBlock = button.parentElement.nextElementSibling;
+      const code = codeBlock.textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        button.textContent = 'Copied!';
+        setTimeout(() => button.textContent = 'Copy', 2000);
+      });
+    }
   </script>
 
   <!-- Syntax highlighting -->

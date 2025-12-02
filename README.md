@@ -13,12 +13,19 @@ A bilingual (EN/ES) personal website featuring the "Lake & Ocean" design system�
 
 ## Tech Stack
 
+### Frontend
 - **HTML5:** Semantic markup
 - **CSS3:** Custom properties for theming, CSS Grid and Flexbox
 - **Vanilla JavaScript:** Theme toggle, language switching, search
 - **Fuse.js:** Lightweight fuzzy search library (loaded from CDN)
 - **Highlight.js:** Syntax highlighting for code blocks (loaded from CDN)
 - **Google Fonts:** Cormorant Garamond, IBM Plex Sans, JetBrains Mono
+
+### Build System
+- **Markdown-it:** Converts Markdown posts to HTML
+- **Gray-matter:** Parses YAML front matter
+- **Git pre-commit hook:** Auto-builds on commit
+- **Chokidar:** Optional file watching for live development
 
 ## Project Structure
 
@@ -28,14 +35,21 @@ A bilingual (EN/ES) personal website featuring the "Lake & Ocean" design system�
 ├── about.html                    # English about page
 ├── now.html                      # English "now" page
 ├── projects.html                 # English projects page
-├── posts/
+├── posts/                        # Generated HTML (DO NOT EDIT DIRECTLY)
 │   ├── index.html                # Blog listing
 │   ├── llms-threat-detection.html
 │   ├── teaching-security-ai.html
 │   └── home-lab-security.html
+├── posts-markdown/               # 📝 WRITE YOUR POSTS HERE
+│   ├── en/                       # English Markdown posts
+│   │   ├── llms-threat-detection.md
+│   │   ├── teaching-security-ai.md
+│   │   └── home-lab-security.md
+│   └── es/                       # Spanish Markdown posts
 ├── es/                           # Spanish versions
-│   ├── index.html                # Spanish homepage (main pages follow same pattern)
-│   └── README.md                 # Guide for completing Spanish translations
+│   ├── index.html                # Spanish homepage
+│   ├── posts/                    # Generated Spanish HTML
+│   └── README.md                 # Translation guide
 ├── styles/
 │   ├── main.css                  # Main stylesheet with Lake & Ocean design system
 │   └── syntax.css                # Code syntax highlighting styles
@@ -44,9 +58,13 @@ A bilingual (EN/ES) personal website featuring the "Lake & Ocean" design system�
 │   ├── language.js               # Language switching logic
 │   └── search.js                 # Blog search functionality
 ├── data/
-│   └── posts.json                # Search index (manually maintained)
+│   └── posts.json                # Auto-generated search index
 ├── images/                       # Images directory
 │   └── README.md                 # Guidelines for adding images
+├── build-posts.js                # Markdown → HTML build script
+├── package.json                  # Build dependencies
+├── .git/hooks/pre-commit         # Auto-build on commit
+├── .gitignore                    # Ignore node_modules
 ├── .nojekyll                     # Prevents GitHub Pages Jekyll processing
 └── README.md                     # This file
 ```
@@ -110,33 +128,68 @@ A bilingual (EN/ES) personal website featuring the "Lake & Ocean" design system�
 
 ## Content Management
 
-### Adding a New Blog Post
+### Adding a New Blog Post (Markdown Workflow)
 
-1. **Create the HTML file:**
-   - Copy an existing post as a template (e.g., `posts/llms-threat-detection.html`)
-   - Save as `posts/your-post-slug.html`
-   - Update all content, metadata, and navigation links
+**Write posts in Markdown, HTML auto-generates on commit!**
 
-2. **Update posts.json:**
-   ```json
-   {
-     "title": "Your Post Title",
-     "url": "/posts/your-post-slug.html",
-     "date": "2025-01-XX",
-     "tags": ["Tag1", "Tag2"],
-     "excerpt": "Brief description...",
-     "readingTime": "X min read",
-     "lang": "en"
-   }
+1. **Create a Markdown file:**
+   ```bash
+   # Create file in posts-markdown/en/
+   touch posts-markdown/en/my-new-post.md
    ```
 
-3. **Create Spanish version (if applicable):**
-   - Create `/es/posts/your-post-slug.html`
-   - Add Spanish entry to `posts.json` with `"lang": "es"`
+2. **Add front matter and content:**
+   ```markdown
+   ---
+   title: "Your Post Title"
+   date: 2025-01-XX
+   tags: ["Tag1", "Tag2", "Tag3"]
+   excerpt: "Brief description that appears in listings and search..."
+   readingTime: "X min read"
+   lang: en
+   prevPost: "/posts/previous-post.html"
+   nextPost: "/posts/next-post.html"
+   ---
 
-4. **Test search functionality:**
-   - Verify the new post appears in search results
-   - Test tag filtering
+   Your markdown content here...
+
+   ## Headings work
+   - Lists work
+   - **Bold** and *italic* work
+
+   ```python
+   # Code blocks with syntax highlighting work
+   def hello():
+       print("Hello!")
+   \```
+   ```
+
+3. **Commit your changes:**
+   ```bash
+   git add posts-markdown/en/my-new-post.md
+   git commit -m "Add new blog post"
+   ```
+
+4. **Magic happens automatically!**
+   - Pre-commit hook runs `node build-posts.js`
+   - HTML file generated at `/posts/my-new-post.html`
+   - `data/posts.json` automatically updated
+   - Generated files auto-staged and committed
+
+5. **For Spanish translations:**
+   - Create `posts-markdown/es/my-new-post.md`
+   - Set `lang: es` in front matter
+   - Commit → Auto-generates `/es/posts/my-new-post.html`
+
+### Manual Build (Optional)
+
+```bash
+# Build all posts
+npm run build
+
+# Watch mode - rebuilds on save
+npm run watch
+```
 
 ### Updating the "Now" Page
 

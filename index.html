@@ -1,13 +1,100 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Steffany Bahamon - Cyber Defense Educator & Software Engineer. Colombian-American cybersecurity professional bridging Miami and Chicago.">
+  <meta name="author" content="Steffany Bahamon">
+  <title>Steffany Bahamon - Cyber Defense Educator & Software Engineer</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+  <!-- Alternate language -->
+  <link rel="alternate" hreflang="es" href="/es/index.html">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/styles/main.css">
+
+  <!-- Preconnect to font CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+
+  <!-- Theme script (runs immediately to prevent flash) -->
+  <script src="/js/theme.js"></script>
 </head>
 <body>
-    <h1>Hello World!</h1>
-    <a href="/posts/2023-08-30-first-post.html"> Click here!</a>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav-container">
+      <h1 class="site-title">
+        <a href="/index.html">Steffany Bahamon</a>
+      </h1>
+
+      <button class="mobile-menu-toggle" aria-label="Toggle menu" id="mobile-menu-toggle">
+        ☰
+      </button>
+
+      <div class="nav-main" id="nav-main">
+        <a href="/about.html">About</a>
+        <a href="/now.html">Now</a>
+        <a href="/posts/index.html">Posts</a>
+        <a href="/projects.html">Projects</a>
+      </div>
+
+      <div class="nav-controls">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          ❄️ Chicago Winter
+        </button>
+        <a href="/es/index.html" id="lang-toggle" class="lang-toggle" aria-label="Cambiar a español">
+          ES
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="main-content">
+    <section class="hero">
+      <h1>Hi, I'm Steffany Bahamon</h1>
+      <p class="tagline">Cyber Defense Educator & Software Engineer</p>
+      <p class="intro">
+        I'm a Colombian-American cybersecurity professional who grew up in Miami and has called Chicago home for the past decade.
+        I've delivered 600+ cybersecurity classes, bridging technical and non-technical audiences with bilingual instruction in English and Spanish.
+        My work focuses on making security accessible and building systems that protect what matters.
+      </p>
+      <p class="intro">
+        When I'm not teaching or building, you'll find me following Formula 1, exploring Chicago's rich history, or planning my next adventure.
+      </p>
+    </section>
+
+    <div class="wave-divider"></div>
+
+    <section>
+      <h2>Recent Posts</h2>
+      <p class="text-muted">Coming soon - writing in progress.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://github.com/sbahamon" aria-label="GitHub" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/sbahamon" aria-label="LinkedIn" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <p>&copy; 2025 Steffany Bahamon. Connecting Lake Michigan to the Atlantic Ocean.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/js/language.js" defer></script>
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-toggle')?.addEventListener('click', function() {
+      const navMain = document.getElementById('nav-main');
+      navMain?.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>

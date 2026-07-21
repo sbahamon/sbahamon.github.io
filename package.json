@@ -4,6 +4,7 @@
   "description": "Personal website with Lake & Ocean design - Markdown to HTML build system",
   "private": true,
   "scripts": {
+    "prepare": "git config core.hooksPath hooks || true",
     "build": "node build-posts.js",
     "watch": "node build-posts.js --watch"
   },

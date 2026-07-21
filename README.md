@@ -57,15 +57,19 @@ A bilingual (EN/ES) personal website featuring the "Lake & Ocean" design system�
 
 2. **Open browser:** `http://localhost:8000`
 
-3. **Activate the build hook (once per clone):**
+3. **Install build dependencies (once per clone):**
    ```bash
    npm install
-   git config core.hooksPath hooks
    ```
-   Git only runs hooks from `.git/hooks` by default, which isn't version-controlled —
-   this points it at the `hooks/` directory in the repo instead. Without it, committing
-   a Markdown post won't regenerate the HTML, `data/posts.json`, `sitemap.xml`, or
-   `llms.txt`; run `npm run build` by hand in that case.
+   This also activates the pre-commit build hook. Git only runs hooks from `.git/hooks`
+   by default, which isn't version-controlled, so the `prepare` script in `package.json`
+   points git at the repo's `hooks/` directory instead. Verify with
+   `git config core.hooksPath` — it should print `hooks`.
+
+   If you installed with `--ignore-scripts`, set it yourself:
+   `git config core.hooksPath hooks`. Without it, committing a Markdown post won't
+   regenerate the HTML, `data/posts.json`, `sitemap.xml`, or `llms.txt` — run
+   `npm run build` by hand in that case.
 
 ### Deployment
 

@@ -3,12 +3,11 @@
 # Pre-commit hook: Auto-build posts from Markdown
 # Only runs if .md files in posts-markdown/ have changed
 #
-# This hook is version-controlled. Git does not run it from here automatically —
-# each clone must opt in once:
+# This hook is version-controlled. Git does not look here by default; the
+# "prepare" script in package.json points it here by running
+# `git config core.hooksPath hooks` on npm install.
 #
-#     git config core.hooksPath hooks
-#
-# Check that it is active with: git config core.hooksPath
+# Check that it is active with: git config core.hooksPath  (should print "hooks")
 
 # Check if Node.js is available
 if ! command -v node >/dev/null 2>&1; then

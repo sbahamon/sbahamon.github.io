@@ -1,0 +1,50 @@
+# robots.txt for https://sbahamon.github.io
+# Policy: welcome search engines and AI crawlers alike.
+
+# --- AI crawlers (explicit welcome) ---
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# --- Everyone else ---
+User-agent: *
+Allow: /
+Disallow: /posts-markdown/
+Disallow: /templates/
+
+# Content usage preferences (https://contentsignals.org/)
+Content-Signal: search=yes, ai-train=yes, ai-input=yes
+
+Sitemap: https://sbahamon.github.io/sitemap.xml

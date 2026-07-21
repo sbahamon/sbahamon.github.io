@@ -42,6 +42,8 @@ const POSTS_DIR = path.join(__dirname, 'posts');
 const ES_POSTS_DIR = path.join(__dirname, 'es', 'posts');
 const DATA_DIR = path.join(__dirname, 'data');
 const POSTS_JSON = path.join(DATA_DIR, 'posts.json');
+const SITEMAP = path.join(__dirname, 'sitemap.xml');
+const BASE_URL = 'https://sbahamon.github.io';
 
 /**
  * Get template HTML with proper structure
@@ -238,6 +240,50 @@ function processMarkdownFile(filePath, lang = 'en') {
 }
 
 /**
+ * Generate sitemap.xml from the static pages plus all built posts.
+ *
+ * The static top-level pages are hand-authored (not build outputs), so they
+ * are listed here explicitly. If you add a new top-level or index page, add
+ * its path to STATIC_PATHS below.
+ */
+function generateSitemap(postsMetadata) {
+  const STATIC_PATHS = [
+    '/',
+    '/about.html',
+    '/now.html',
+    '/projects.html',
+    '/posts/',
+    '/es/',
+    '/es/about.html',
+    '/es/now.html',
+    '/es/projects.html',
+    '/es/posts/'
+  ];
+
+  const urlEntries = [];
+
+  // Static pages (no lastmod — no reliable per-page modification date)
+  STATIC_PATHS.forEach(p => {
+    urlEntries.push(`  <url>\n    <loc>${BASE_URL}${p}</loc>\n  </url>`);
+  });
+
+  // Blog posts (lastmod from front-matter date)
+  postsMetadata.forEach(post => {
+    const lastmod = post.date ? `\n    <lastmod>${post.date}</lastmod>` : '';
+    urlEntries.push(`  <url>\n    <loc>${BASE_URL}${post.url}</loc>${lastmod}\n  </url>`);
+  });
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urlEntries.join('\n')}
+</urlset>
+`;
+
+  fs.writeFileSync(SITEMAP, xml, 'utf8');
+  console.log(`✓ Updated: ${SITEMAP} (${STATIC_PATHS.length} static + ${postsMetadata.length} posts)`);
+}
+
+/**
  * Build all posts
  */
 function buildPosts() {
@@ -268,6 +314,9 @@ function buildPosts() {
   // Update posts.json
   fs.writeFileSync(POSTS_JSON, JSON.stringify(postsMetadata, null, 2), 'utf8');
   console.log(`\n✓ Updated: ${POSTS_JSON}`);
+
+  // Update sitemap.xml
+  generateSitemap(postsMetadata);
   console.log(`\n✨ Build complete! Generated ${postsMetadata.length} posts.`);
 }
 

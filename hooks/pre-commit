@@ -1,0 +1,43 @@
+#!/bin/sh
+
+# Pre-commit hook: Auto-build posts from Markdown
+# Only runs if .md files in posts-markdown/ have changed
+#
+# This hook is version-controlled. Git does not run it from here automatically —
+# each clone must opt in once:
+#
+#     git config core.hooksPath hooks
+#
+# Check that it is active with: git config core.hooksPath
+
+# Check if Node.js is available
+if ! command -v node >/dev/null 2>&1; then
+    echo "Warning: Node.js not found. Skipping post build."
+    echo "HTML files will need to be generated manually with: npm run build"
+    exit 0
+fi
+
+# Check if any markdown files changed
+if git diff --cached --name-only | grep -q "^posts-markdown/.*\.md$"; then
+    echo "📝 Markdown posts changed, building HTML..."
+
+    # Run the build script
+    node build-posts.js
+
+    # Check if build was successful
+    if [ $? -eq 0 ]; then
+        echo "✓ Build complete"
+
+        # Stage the generated HTML files, posts.json, sitemap.xml, and llms.txt
+        git add posts/*.html es/posts/*.html data/posts.json sitemap.xml llms.txt 2>/dev/null || true
+
+        echo "✓ Generated HTML files staged for commit"
+    else
+        echo "❌ Build failed! Please fix errors and try again."
+        exit 1
+    fi
+else
+    echo "No markdown changes detected, skipping build"
+fi
+
+exit 0

@@ -38,6 +38,8 @@ A bilingual (EN/ES) personal website featuring the "Lake & Ocean" design system�
 ├── styles/                       # CSS with Lake & Ocean design system
 ├── js/                           # Theme, language, search scripts
 ├── data/posts.json               # Auto-generated search index
+├── llms.txt                      # Auto-generated site index for AI agents
+├── hooks/pre-commit              # Auto-build hook (see Getting Started)
 └── build-posts.js                # Markdown → HTML converter
 ```
 
@@ -54,6 +56,16 @@ A bilingual (EN/ES) personal website featuring the "Lake & Ocean" design system�
    ```
 
 2. **Open browser:** `http://localhost:8000`
+
+3. **Activate the build hook (once per clone):**
+   ```bash
+   npm install
+   git config core.hooksPath hooks
+   ```
+   Git only runs hooks from `.git/hooks` by default, which isn't version-controlled —
+   this points it at the `hooks/` directory in the repo instead. Without it, committing
+   a Markdown post won't regenerate the HTML, `data/posts.json`, `sitemap.xml`, or
+   `llms.txt`; run `npm run build` by hand in that case.
 
 ### Deployment
 

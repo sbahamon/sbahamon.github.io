@@ -149,7 +149,7 @@ Lightweight Markdown-to-HTML converter:
 
 **Edit directly:** Main pages (index.html, about.html, now.html, projects.html), Spanish pages (es/index.html, es/about.html, es/now.html, es/projects.html, es/posts/index.html), stylesheets, JavaScript, Markdown posts (posts-markdown/)
 
-**NEVER edit directly:** Individual blog post HTML (posts/*.html except index.html, es/posts/*.html except index.html), search index (data/posts.json) — these are generated from Markdown
+**NEVER edit directly:** Individual blog post HTML (posts/*.html except index.html, es/posts/*.html except index.html), search index (data/posts.json), sitemap.xml, llms.txt — these are all written by `build-posts.js`
 
 ---
 
@@ -157,7 +157,7 @@ Lightweight Markdown-to-HTML converter:
 
 | File | Purpose | Key Details |
 |------|---------|-------------|
-| `build-posts.js` | Markdown → HTML converter | Parses YAML front matter, converts Markdown, injects into template, updates posts.json. Run via pre-commit hook or `npm run build` |
+| `build-posts.js` | Markdown → HTML converter | Parses YAML front matter, converts Markdown, injects into template, updates posts.json, sitemap.xml, and llms.txt. Run via pre-commit hook or `npm run build` |
 | `.git/hooks/pre-commit` | Auto-build trigger | Runs build-posts.js on commit if .md files changed, stages generated HTML |
 | `styles/main.css` | Design system implementation | All CSS custom properties for theming (light/dark), responsive design |
 | `js/theme.js` | Theme toggle | Toggles `data-theme="dark"` attribute, persists to localStorage |

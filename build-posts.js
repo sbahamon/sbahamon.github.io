@@ -43,6 +43,7 @@ const ES_POSTS_DIR = path.join(__dirname, 'es', 'posts');
 const DATA_DIR = path.join(__dirname, 'data');
 const POSTS_JSON = path.join(DATA_DIR, 'posts.json');
 const SITEMAP = path.join(__dirname, 'sitemap.xml');
+const LLMS_TXT = path.join(__dirname, 'llms.txt');
 const BASE_URL = 'https://sbahamon.github.io';
 
 /**
@@ -284,6 +285,68 @@ ${urlEntries.join('\n')}
 }
 
 /**
+ * Generate llms.txt — a markdown index of the site for AI agents and crawlers.
+ * Format: https://llmstxt.org (H1, blockquote summary, then H2 link lists)
+ *
+ * Like generateSitemap(), the static pages are hand-authored rather than build
+ * outputs, so they are listed explicitly below. Descriptions mirror each page's
+ * <meta name="description"> — keep them in sync if a page description changes.
+ */
+function generateLlmsTxt(postsMetadata) {
+  const EN_PAGES = [
+    ['Home', '/', 'Technology educator and software engineer; overview and recent posts'],
+    ['About', '/about.html', 'Colombian-American technology educator and software engineer bridging cultures between Miami and Chicago'],
+    ['Now', '/now.html', 'What Steffany is doing now — current projects, learning, and interests'],
+    ['Projects', '/projects.html', 'Technology, data analysis, and software engineering projects'],
+    ['Posts', '/posts/', 'Blog posts about AI, technology, education, and learning design']
+  ];
+
+  const ES_PAGES = [
+    ['Inicio', '/es/', 'Educadora en tecnología e ingeniera de software; resumen y publicaciones recientes'],
+    ['Sobre Mí', '/es/about.html', 'Educadora en tecnología e ingeniera de software colombo-americana conectando culturas entre Miami y Chicago'],
+    ['Ahora', '/es/now.html', 'Qué está haciendo Steffany ahora — proyectos actuales, aprendizaje e intereses'],
+    ['Proyectos', '/es/projects.html', 'Proyectos de tecnología, análisis de datos e ingeniería de software'],
+    ['Publicaciones', '/es/posts/', 'Publicaciones sobre IA, tecnología, educación y diseño de aprendizaje']
+  ];
+
+  // Render a page tuple or a post as a markdown list item
+  const pageItem = ([name, p, desc]) => `- [${name}](${BASE_URL}${p}): ${desc}`;
+  const postItem = post => {
+    const desc = post.excerpt ? `: ${post.excerpt}` : '';
+    return `- [${post.title}](${BASE_URL}${post.url})${desc}`;
+  };
+
+  // Only emit a section when it has entries — no empty headings
+  const section = (heading, items) =>
+    items.length ? [`## ${heading}`, '', ...items, ''].join('\n') : null;
+
+  const enPosts = postsMetadata.filter(p => p.lang === 'en').map(postItem);
+  const esPosts = postsMetadata.filter(p => p.lang === 'es').map(postItem);
+
+  const blocks = [
+    '# Steffany Bahamon',
+    '',
+    '> Colombian-American technology educator and software engineer. 600+ technical classes',
+    '> delivered in English and Spanish, bridging Miami and Chicago. Personal site and',
+    '> bilingual blog on technology, AI, and education.',
+    '',
+    'This site is published in English at / and in Spanish at /es/. Both versions carry the',
+    'same content; blog posts are translated per-post as they are written.',
+    '',
+    section('Pages', EN_PAGES.map(pageItem)),
+    section('Posts', enPosts),
+    section('Español', ES_PAGES.map(pageItem)),
+    section('Publicaciones', esPosts),
+    section('Optional', [`- [Sitemap](${BASE_URL}/sitemap.xml): full list of indexable URLs`])
+  ];
+
+  const txt = blocks.filter(b => b !== null).join('\n');
+
+  fs.writeFileSync(LLMS_TXT, txt, 'utf8');
+  console.log(`✓ Updated: ${LLMS_TXT} (${EN_PAGES.length + ES_PAGES.length} pages + ${postsMetadata.length} posts)`);
+}
+
+/**
  * Build all posts
  */
 function buildPosts() {
@@ -317,6 +380,9 @@ function buildPosts() {
 
   // Update sitemap.xml
   generateSitemap(postsMetadata);
+
+  // Update llms.txt
+  generateLlmsTxt(postsMetadata);
   console.log(`\n✨ Build complete! Generated ${postsMetadata.length} posts.`);
 }
 

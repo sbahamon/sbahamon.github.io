@@ -43,17 +43,25 @@
 
   /**
    * Update toggle button text and aria-label
+   * Label shows the CURRENT theme; aria-label describes the switch action.
+   * Localized based on the page's lang attribute.
    */
   function updateToggleButton(theme) {
     const toggleBtn = document.getElementById('theme-toggle');
     if (!toggleBtn) return;
 
+    const isSpanish = (document.documentElement.lang || '').startsWith('es');
+
     if (theme === THEME_DARK) {
-      toggleBtn.textContent = '☀️ Miami Summer';
-      toggleBtn.setAttribute('aria-label', 'Switch to light mode (Miami Summer)');
+      toggleBtn.textContent = isSpanish ? '❄️ Invierno de Chicago' : '❄️ Chicago Winter';
+      toggleBtn.setAttribute('aria-label', isSpanish
+        ? 'Cambiar a modo claro (Verano de Miami)'
+        : 'Switch to light mode (Miami Summer)');
     } else {
-      toggleBtn.textContent = '❄️ Chicago Winter';
-      toggleBtn.setAttribute('aria-label', 'Switch to dark mode (Chicago Winter)');
+      toggleBtn.textContent = isSpanish ? '☀️ Verano de Miami' : '☀️ Miami Summer';
+      toggleBtn.setAttribute('aria-label', isSpanish
+        ? 'Cambiar a modo oscuro (Invierno de Chicago)'
+        : 'Switch to dark mode (Chicago Winter)');
     }
   }
 

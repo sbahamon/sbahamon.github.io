@@ -96,7 +96,7 @@ function getTemplate(lang = 'en') {
       </div>
 
       <div class="nav-controls">
-        <button id="theme-toggle" class="theme-toggle" aria-label="${isSpanish ? 'Cambiar tema' : 'Toggle theme'}">❄️ ${isSpanish ? 'Invierno de Chicago' : 'Chicago Winter'}</button>
+        <button id="theme-toggle" class="theme-toggle" aria-label="${isSpanish ? 'Cambiar tema' : 'Toggle theme'}">☀️ ${isSpanish ? 'Verano de Miami' : 'Miami Summer'}</button>
         <a href="${altUrl}" id="lang-toggle" class="lang-toggle" aria-label="${isSpanish ? 'Switch to English' : 'Cambiar a español'}">${isSpanish ? 'EN' : 'ES'}</a>
       </div>
     </nav>
@@ -112,7 +112,7 @@ function getTemplate(lang = 'en') {
 
       <p class="text-muted">
         <em>${isSpanish ? 'Conéctate conmigo en' : 'Connect with me on'}
-        <a href="https://linkedin.com/in/sbahamon" target="_blank" rel="noopener">LinkedIn</a> ${isSpanish ? 'o' : 'or'}
+        <a href="https://linkedin.com/in/steffanybahamon" target="_blank" rel="noopener">LinkedIn</a> ${isSpanish ? 'o' : 'or'}
         <a href="https://github.com/sbahamon" target="_blank" rel="noopener">GitHub</a>.</em>
       </p>
 
@@ -129,9 +129,9 @@ function getTemplate(lang = 'en') {
     <div class="footer-content">
       <div class="social-links">
         <a href="https://github.com/sbahamon" aria-label="GitHub" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://linkedin.com/in/sbahamon" aria-label="LinkedIn" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://linkedin.com/in/steffanybahamon" aria-label="LinkedIn" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-      <p>&copy; 2025 Steffany Bahamon. ${isSpanish ? 'Conectando el Lago Michigan con el Océano Atlántico.' : 'Connecting Lake Michigan to the Atlantic Ocean.'}</p>
+      <p>&copy; 2026 Steffany Bahamon. ${isSpanish ? 'Conectando el Lago Michigan con el Océano Atlántico.' : 'Connecting Lake Michigan to the Atlantic Ocean.'}</p>
     </div>
   </footer>
 

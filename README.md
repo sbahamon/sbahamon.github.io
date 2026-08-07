@@ -96,14 +96,14 @@ Site is fully bilingual (English at `/`, Spanish at `/es/`). Main pages already 
 
 ## License
 
-Content © 2025 Steffany Bahamon. All rights reserved.
+Content © 2026 Steffany Bahamon. All rights reserved.
 
 Code is available for reference and learning purposes.
 
 ## Contact
 
 - **GitHub:** [@sbahamon](https://github.com/sbahamon)
-- **LinkedIn:** [/in/sbahamon](https://linkedin.com/in/sbahamon)
+- **LinkedIn:** [/in/steffanybahamon](https://linkedin.com/in/steffanybahamon)
 - **Website:** [sbahamon.github.io](https://sbahamon.github.io)
 
 ---

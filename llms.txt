@@ -1,6 +1,6 @@
 # Steffany Bahamon
 
-> Colombian-American technology educator. 600+ technical classes
+> Colombian-American technology educator and technical curriculum developer. 600+ technical classes
 > delivered in English and Spanish, bridging Miami and Chicago. Personal site and
 > bilingual blog on technology, AI, and education.
 
@@ -9,16 +9,16 @@ same content; blog posts are translated per-post as they are written.
 
 ## Pages
 
-- [Home](https://sbahamon.github.io/): Technology educator; overview and recent posts
-- [About](https://sbahamon.github.io/about.html): Colombian-American technology educator bridging cultures between Miami and Chicago
+- [Home](https://sbahamon.github.io/): Technology educator and technical curriculum developer; overview and recent posts
+- [About](https://sbahamon.github.io/about.html): Colombian-American technology educator and technical curriculum developer bridging cultures between Miami and Chicago
 - [Now](https://sbahamon.github.io/now.html): What Steffany is doing now — current projects, learning, and interests
 - [Projects](https://sbahamon.github.io/projects.html): Technology and data analysis projects
 - [Posts](https://sbahamon.github.io/posts/): Blog posts about AI, technology, education, and learning design
 
 ## Español
 
-- [Inicio](https://sbahamon.github.io/es/): Educadora en tecnología; resumen y publicaciones recientes
-- [Sobre Mí](https://sbahamon.github.io/es/about.html): Educadora en tecnología colombo-americana conectando culturas entre Miami y Chicago
+- [Inicio](https://sbahamon.github.io/es/): Educadora en tecnología y desarrolladora de currículos técnicos; resumen y publicaciones recientes
+- [Sobre Mí](https://sbahamon.github.io/es/about.html): Educadora en tecnología y desarrolladora de currículos técnicos colombo-americana conectando culturas entre Miami y Chicago
 - [Ahora](https://sbahamon.github.io/es/now.html): Qué está haciendo Steffany ahora — proyectos actuales, aprendizaje e intereses
 - [Proyectos](https://sbahamon.github.io/es/projects.html): Proyectos de tecnología y análisis de datos
 - [Publicaciones](https://sbahamon.github.io/es/posts/): Publicaciones sobre IA, tecnología, educación y diseño de aprendizaje

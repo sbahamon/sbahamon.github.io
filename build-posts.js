@@ -294,18 +294,18 @@ ${urlEntries.join('\n')}
  */
 function generateLlmsTxt(postsMetadata) {
   const EN_PAGES = [
-    ['Home', '/', 'Technology educator and software engineer; overview and recent posts'],
-    ['About', '/about.html', 'Colombian-American technology educator and software engineer bridging cultures between Miami and Chicago'],
+    ['Home', '/', 'Technology educator; overview and recent posts'],
+    ['About', '/about.html', 'Colombian-American technology educator bridging cultures between Miami and Chicago'],
     ['Now', '/now.html', 'What Steffany is doing now — current projects, learning, and interests'],
-    ['Projects', '/projects.html', 'Technology, data analysis, and software engineering projects'],
+    ['Projects', '/projects.html', 'Technology and data analysis projects'],
     ['Posts', '/posts/', 'Blog posts about AI, technology, education, and learning design']
   ];
 
   const ES_PAGES = [
-    ['Inicio', '/es/', 'Educadora en tecnología e ingeniera de software; resumen y publicaciones recientes'],
-    ['Sobre Mí', '/es/about.html', 'Educadora en tecnología e ingeniera de software colombo-americana conectando culturas entre Miami y Chicago'],
+    ['Inicio', '/es/', 'Educadora en tecnología; resumen y publicaciones recientes'],
+    ['Sobre Mí', '/es/about.html', 'Educadora en tecnología colombo-americana conectando culturas entre Miami y Chicago'],
     ['Ahora', '/es/now.html', 'Qué está haciendo Steffany ahora — proyectos actuales, aprendizaje e intereses'],
-    ['Proyectos', '/es/projects.html', 'Proyectos de tecnología, análisis de datos e ingeniería de software'],
+    ['Proyectos', '/es/projects.html', 'Proyectos de tecnología y análisis de datos'],
     ['Publicaciones', '/es/posts/', 'Publicaciones sobre IA, tecnología, educación y diseño de aprendizaje']
   ];
 
@@ -326,7 +326,7 @@ function generateLlmsTxt(postsMetadata) {
   const blocks = [
     '# Steffany Bahamon',
     '',
-    '> Colombian-American technology educator and software engineer. 600+ technical classes',
+    '> Colombian-American technology educator. 600+ technical classes',
     '> delivered in English and Spanish, bridging Miami and Chicago. Personal site and',
     '> bilingual blog on technology, AI, and education.',
     '',
